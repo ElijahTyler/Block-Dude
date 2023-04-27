@@ -52,8 +52,7 @@ def main():
                             for i in range(len(current_layout)):
                                 layout_nums.append([])
                                 for j in range(len(current_layout[0])):
-                                    if current_layout[i][j].img:
-                                        layout_nums[i].append(current_layout[i][j].type)
+                                    layout_nums[i].append(current_layout[i][j].type)
                             new_dict = {
                                 'level': level,
                                 'layout': layout_nums,
