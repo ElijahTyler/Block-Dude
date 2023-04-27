@@ -8,7 +8,7 @@ import Dude as D
 def main():
     # visible screen should be 18 block wide, 12 block tall
     screen = pygame.display.set_mode((432, 288))
-    level = 8
+    level = 10
 
     def game_loop(level):
         current_level = L.Level(level)
