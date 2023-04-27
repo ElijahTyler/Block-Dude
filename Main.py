@@ -1,3 +1,4 @@
+import os
 from time import sleep
 import json
 import pygame
@@ -113,7 +114,7 @@ def main():
                                 screen.blit(text, textRect)
                                 pygame.display.flip()
                                 pygame.mixer.Channel(0).set_volume(1)
-                                pygame.mixer.Channel(0).play(pygame.mixer.Sound('creepy.wav'))
+                                pygame.mixer.Channel(0).play(pygame.mixer.Sound(os.path.join('assets', 'creepy.wav')))
                                 sleep(8)
                             except:
                                 pass
