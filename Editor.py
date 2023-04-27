@@ -8,7 +8,7 @@ pygame.init()
 maindir = os.path.dirname(os.path.abspath(__file__))
 bkgrddir = os.path.join(maindir, 'assets', 'backgrounds')
 
-current_level = L.Level(6)
+current_level = L.Level(8)
 new_level = current_level.level_blocks
 
 size = width, height = 24*len(new_level[0]), 24*len(new_level)
