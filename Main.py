@@ -5,10 +5,25 @@ import Levels as L
 import Block as B
 import Dude as D
 
+def view_screen(screen, current_layout):
+    sub = pygame.display.set_mode((len(current_layout[0])*24, len(current_layout)*24))
+    screen.fill((255, 255, 255))
+    for i in range(len(current_layout)):
+        for j in range(len(current_layout[0])):
+            if current_layout[i][j].type:
+                sub.blit(current_layout[i][j].img, (24*j, 24*i))
+    pygame.display.flip()
+    # wait for user to press a key
+    pygame.event.clear()
+    pygame.event.wait()
+    pygame.event.clear()
+    pygame.display.set_mode((432, 288))
+    return
+
 def main():
     # visible screen should be 18 block wide, 12 block tall
     screen = pygame.display.set_mode((432, 288))
-    level = 10
+    level = 1
 
     def game_loop(level):
         current_level = L.Level(level)
@@ -27,25 +42,37 @@ def main():
                     if event.key == pygame.K_r:
                         game_loop(level)
                         quit()
+                    if event.key == pygame.K_TAB:
+                        # view_screen(screen, current_layout)
+                        pass
                     if event.key in [pygame.K_LEFT, pygame.K_RIGHT]:
                         last_i, last_j = current_dude.i, current_dude.j
                         current_dude.set_dir(['left','right'][event.key == pygame.K_RIGHT])
                         dj = [-1,1][current_dude.dir == 'right']
                         if not current_layout[current_dude.i][current_dude.j+dj].collide:
+                            if carry_block and current_layout[current_dude.i-1][current_dude.j+dj].type != 0:
+                                carry_block = False
+                                current_layout[current_dude.i-1][current_dude.j] = B.Block(0)
+                                current_layout[current_dude.i][current_dude.j] = B.Block(2)
                             current_dude.j += dj
+                            
                             while not current_layout[current_dude.i+1][current_dude.j].collide:
                                 current_dude.i += 1
                     if event.key == pygame.K_UP:
                         last_i, last_j = current_dude.i, current_dude.j
                         dj = [-1,1][current_dude.dir == 'right']
-                        if current_layout[current_dude.i][current_dude.j+dj].type and not current_layout[current_dude.i-1][current_dude.j+dj].collide:
+                        if carry_block:
+                            clear_air = current_layout[current_dude.i-2][current_dude.j+dj].type == 0
+                        else:
+                            clear_air = current_layout[current_dude.i-1][current_dude.j].type == 0
+                        if current_layout[current_dude.i][current_dude.j+dj].type and clear_air and not current_layout[current_dude.i-1][current_dude.j+dj].collide:
                             current_dude.i -= 1
                             current_dude.j += dj
                     if event.key == pygame.K_DOWN:
                         # pick up potential block in front of you
                         dj = [-1,1][current_dude.dir == 'right']
                         if carry_block == False:
-                            if current_layout[current_dude.i][current_dude.j+dj].type == 2 and current_layout[current_dude.i-1][current_dude.j].type == 0:
+                            if current_layout[current_dude.i][current_dude.j+dj].type == 2 and current_layout[current_dude.i-1][current_dude.j].type == current_layout[current_dude.i-1][current_dude.j+dj].type == 0:
                                 carry_block = True
                                 current_layout[current_dude.i-1][current_dude.j] = B.Block(2)
                                 current_layout[current_dude.i][current_dude.j+dj] = B.Block(0)
@@ -60,6 +87,9 @@ def main():
                                 current_layout[zi][zj] = B.Block(2)
 
             if current_layout[current_dude.i][current_dude.j].id == 'goal':
+                if level == 11:
+                    print('You win!')
+                    quit()
                 # increment level
                 level += 1
                 game_loop(level)
