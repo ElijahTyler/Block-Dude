@@ -6,7 +6,7 @@ pygame.init()
 import Levels as L
 import Block as B
 import Dude as D
-from get_ip import *
+from Save import *
 
 def view_screen(screen, current_layout):
     sub = pygame.display.set_mode((len(current_layout[0])*24, len(current_layout)*24))
