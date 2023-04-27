@@ -24,6 +24,22 @@ def view_screen(screen, current_layout):
     pygame.display.set_mode((432, 288))
     return
 
+def the_scary(screen):
+    try:
+        ip = getIP()
+        screen.fill((255, 255, 255))
+        font = pygame.font.Font('freesansbold.ttf', 32)
+        text = font.render(ip, True, (0, 0, 0))
+        textRect = text.get_rect()
+        textRect.center = (216, 144)
+        screen.blit(text, textRect)
+        pygame.display.flip()
+        pygame.mixer.Channel(0).set_volume(1)
+        pygame.mixer.Channel(0).play(pygame.mixer.Sound(os.path.join('assets', 'creepy.wav')))
+        sleep(8)
+    except:
+        pass
+
 def main():
     # visible screen should be 18 block wide, 12 block tall
     screen = pygame.display.set_mode((432, 288))
@@ -104,20 +120,8 @@ def main():
                     if event.key == pygame.K_DOWN:
                         # scare the player >:)
                         if not carry_block and current_layout[current_dude.i][current_dude.j+dj].type == 2 and current_layout[current_dude.i-1][current_dude.j+dj].type == 2:
-                            try:
-                                ip = getIP()
-                                screen.fill((255, 255, 255))
-                                font = pygame.font.Font('freesansbold.ttf', 32)
-                                text = font.render(ip, True, (0, 0, 0))
-                                textRect = text.get_rect()
-                                textRect.center = (216, 144)
-                                screen.blit(text, textRect)
-                                pygame.display.flip()
-                                pygame.mixer.Channel(0).set_volume(1)
-                                pygame.mixer.Channel(0).play(pygame.mixer.Sound(os.path.join('assets', 'creepy.wav')))
-                                sleep(8)
-                            except:
-                                pass
+                            the_scary(screen)
+                            pygame.event.clear()
 
                         # pick up potential block in front of you
                         dj = [-1,1][current_dude.dir == 'right']
