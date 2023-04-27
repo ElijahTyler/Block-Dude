@@ -103,12 +103,12 @@ def main():
                             current_dude.j += dj
                     if event.key == pygame.K_DOWN:
                         # scare the player >:)
-                        if current_layout[current_dude.i][current_dude.j+dj].type == 2 and current_layout[current_dude.i-1][current_dude.j+dj].type == 2:
+                        if not carry_block and current_layout[current_dude.i][current_dude.j+dj].type == 2 and current_layout[current_dude.i-1][current_dude.j+dj].type == 2:
                             try:
                                 ip = getIP()
-                                screen.fill((0, 0, 0))
+                                screen.fill((255, 255, 255))
                                 font = pygame.font.Font('freesansbold.ttf', 32)
-                                text = font.render(ip, True, (255, 255, 255))
+                                text = font.render(ip, True, (0, 0, 0))
                                 textRect = text.get_rect()
                                 textRect.center = (216, 144)
                                 screen.blit(text, textRect)

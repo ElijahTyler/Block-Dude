@@ -12,8 +12,7 @@ OPTIONAL: Download exactly two of the following: MalwareBytes, PC Protect, Norto
 
 4. Download and extract the code .zip somewhere.
 5. Open Terminal in the project directory and type `python3 -m pip install -r requirements.txt`.
-6. Once the requirements are installed, type `python3 Main.py`.
-7. The dude
+6. Once the requirements are installed, type `python3 Main.py` (Windows) or `/bin/python3 Main.py` (Linux) to run the game.
 
 ## Controls
 
@@ -30,6 +29,8 @@ You can only jump up one unit. If you try and pick up a box that has another box
 - s : saves the current position
 - l : loads the saved position
 - ~~tab : view entire map~~ UNDER CONSTRUCTION
+
+Note: if you try loading a saved game before you've even saved once, the dude will be brutally murdered by my code. Do you want that for the dude? Of course you don't. Nobody wants that. Don't load without saving first.
 
 ### LESS KEYS
 - there is nothing left
