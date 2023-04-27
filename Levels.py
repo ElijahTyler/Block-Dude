@@ -235,10 +235,7 @@ class Level:
         # create level layout
         for i in range(len(self.level)):
             for j in range(len(self.level[0])):
-                if self.level[i][j] != 4:
-                    self.level_blocks[i][j] = B.Block(self.level[i][j])
-                else:
-                    self.level_blocks[i][j] = B.Block(0)
+                self.level_blocks[i][j] = B.Block(self.level[i][j])
     
     def get_start_ij(self):
         return self.start_i, self.start_j
