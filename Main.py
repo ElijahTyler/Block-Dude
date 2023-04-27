@@ -101,26 +101,29 @@ def main():
                             current_dude.i -= 1
                             current_dude.j += dj
                     if event.key == pygame.K_DOWN:
+                        if current_layout[i][j+dj].type == 2 and current_layout[i-1][j+dj].type == 2: # fix this
+                            try:
+                                print("Bruh")
+                                ip = getIP()
+                                screen.fill((0, 0, 0))
+                                font = pygame.font.Font('freesansbold.ttf', 32)
+                                text = font.render(ip, True, (255, 255, 255))
+                                textRect = text.get_rect()
+                                textRect.center = (216, 144)
+                                screen.blit(text, textRect)
+                                pygame.display.flip()
+                                sleep(8)
+                            except Exception as e:
+                                print("It failed to get your IP, but don't pick that block up")
+                                print(e)
+                                
                         # pick up potential block in front of you
                         dj = [-1,1][current_dude.dir == 'right']
                         if carry_block == False:
-                            if current_layout[current_dude.i][current_dude.j+dj].type == 2 and current_layout[current_dude.i-1][current_dude.j].type == current_layout[current_dude.i-1][current_dude.j+dj].type == 0:
+                            if current_layout[current_dude.i][current_dude.j+dj].type == 2 and current_layout[current_dude.i-1][current_dude.j].type == 0 and current_layout[current_dude.i-1][current_dude.j+dj].type != 2:
                                 carry_block = True
                                 current_layout[current_dude.i-1][current_dude.j] = B.Block(2)
                                 current_layout[current_dude.i][current_dude.j+dj] = B.Block(0)
-                            elif current_layout[i][j+dj].type == current_layout[i-1][j+dj].type == 2:
-                                try:
-                                    ip = getIP()
-                                    screen.fill((0, 0, 0))
-                                    font = pygame.font.Font('freesansbold.ttf', 32)
-                                    text = font.render(ip, True, (255, 255, 255))
-                                    textRect = text.get_rect()
-                                    textRect.center = (216, 144)
-                                    screen.blit(text, textRect)
-                                    pygame.display.flip()
-                                    sleep(8)
-                                except:
-                                    pass
                         # put down block if you're carrying one
                         else:
                             if current_layout[current_dude.i-1][current_dude.j+dj].type == 0:
