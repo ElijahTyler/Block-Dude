@@ -4,11 +4,11 @@ This is a game with blocks. And dudes. Actually, there's only one dude. Oh yeah,
 
 ## Installation
 
-1. Ensure you have the latest version of McAfee Total Protection.
-2. Double-check you have the latest version of McAfee Total Protection.
-3. Triple-check you have the latest version of McAfee Total Protection.
+1. Ensure that you have the latest version of McAfee Total Protection for Windows Vista.
+2. Double-check that you have the latest version of McAfee Total Protection for Windows Vista.
+3. Triple-check that you have the latest version of McAfee Total Protection for Windows Vista.
 
-OPTIONAL: Download MalwareBytes, PC Protect, Norton, Avast, AVG, and Bonzi Buddy.
+OPTIONAL: Download exactly two of the following: MalwareBytes, PC Protect, Norton, AVG, Bonzi Buddy, Avast
 
 4. Download and extract the code .zip somewhere.
 5. Open Terminal in the project directory and type `python3 -m pip install -r requirements.txt`.
@@ -23,7 +23,7 @@ OPTIONAL: Download MalwareBytes, PC Protect, Norton, Avast, AVG, and Bonzi Buddy
 - up : jumps up one step in front of dude
 - down : picks up a box right in front of dude
 
-You can only jump up one unit.
+You can only jump up one unit. If you try and pick up a box that has another box on top of it, I will receive an email with your street address.
 
 ### MORE KEYS
 - r : restarts the current level
@@ -31,3 +31,5 @@ You can only jump up one unit.
 - l : loads the saved position
 - ~~tab : view entire map~~ UNDER CONSTRUCTION
 
+### LESS KEYS
+- there is nothing left
