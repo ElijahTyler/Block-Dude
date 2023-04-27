@@ -13,7 +13,6 @@ This is a game called Block Dude. This is a game called Block Dude. This is a ga
 1. Ensure you have the latest version of McAfee Total Protection.
 2. Triple-check you have the latest version of McAfee Total Protection.
 3. Quadruple-check you have the latest version of McAfee Total Protection.
-
-...
-
-n. (n-1)-check you have the latest version of McAfee Total Protection.
+4. Download and extract the code .zip somewhere.
+5. Open Terminal in the project directory and type `python3 Main.py`.
+6. The dude
