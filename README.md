@@ -14,3 +14,20 @@ OPTIONAL: Download MalwareBytes, PC Protect, Norton, Avast, AVG, and Bonzi Buddy
 5. Open Terminal in the project directory and type `python3 -m pip install -r requirements.txt`.
 6. Once the requirements are installed, type `python3 Main.py`.
 7. The dude
+
+## Controls
+
+### ARROW KEYS
+- left : moves one block left
+- right : moves one block right :o
+- up : jumps up one step in front of dude
+- down : picks up a box right in front of dude
+
+You can only jump up one unit.
+
+### MORE KEYS
+- r : restarts the current level
+- s : saves the current position
+- l : loads the saved position
+- ~~tab : view entire map~~ UNDER CONSTRUCTION
+
