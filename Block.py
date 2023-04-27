@@ -20,5 +20,3 @@ class Block:
             case 3:
                 self.id = "goal"
                 self.img = pygame.image.load(os.path.join("assets", "door.png"))
-            case 4:
-                print("Making a dude >:)")

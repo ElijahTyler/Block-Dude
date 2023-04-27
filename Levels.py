@@ -2,8 +2,7 @@ import Block as B
 import Dude as D
 
 class Level:
-    def __init__(self, level):
-        self.level = None
+    def __init__(self, level = 1):
         match level:
             case 0:
                 self.level = [[0 for i in range(20)] for j in range(12)]
@@ -227,6 +226,8 @@ class Level:
                 ]
                 self.start_i = 4
                 self.start_j = 13
+            case _:
+                self.level = level
         
         # create blank array with the same dimensions as self.level
         self.level_blocks = [[None for i in range(len(self.level[0]))] for j in range(len(self.level))]

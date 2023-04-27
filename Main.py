@@ -52,7 +52,7 @@ def main():
                             for i in range(len(current_layout)):
                                 layout_nums.append([])
                                 for j in range(len(current_layout[0])):
-                                    if current_layout[i][j].type != 4:
+                                    if current_layout[i][j].img:
                                         layout_nums[i].append(current_layout[i][j].type)
                             new_dict = {
                                 'level': level,
@@ -69,12 +69,13 @@ def main():
                         with open('save.json', 'r') as f:
                             save_dict = json.load(f)
                         level = save_dict['level']
-                        current_level = L.Level(level)
+                        current_level = L.Level(save_dict['layout'])
                         current_layout = current_level.level_blocks
                         current_dude_i, current_dude_j = save_dict['player']['i'], save_dict['player']['j']
                         current_dude = D.Dude(current_dude_i, current_dude_j)
                         current_dude.set_dir(save_dict['player']['dir'])
                         carry_block = save_dict['carry_block']
+                        pygame.display.flip()
                     if event.key in [pygame.K_LEFT, pygame.K_RIGHT]:
                         last_i, last_j = current_dude.i, current_dude.j
                         current_dude.set_dir(['left','right'][event.key == pygame.K_RIGHT])
