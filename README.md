@@ -23,7 +23,7 @@ OPTIONAL: Download exactly two of the following: MalwareBytes, PC Protect, Norto
 - up : jumps up one step in front of dude
 - down : picks up a box right in front of dude
 
-You can only jump up one unit. If you try and pick up a box that has another box on top of it, I will receive an email with your street address.
+You can only jump up one unit. If you try and pick up a box that has another box on top of it, I will receive an email with your IP address.
 
 ### MORE KEYS
 - r : restarts the current level
