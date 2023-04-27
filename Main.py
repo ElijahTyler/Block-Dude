@@ -1,3 +1,4 @@
+from time import sleep
 import json
 import pygame
 pygame.init()
@@ -5,6 +6,7 @@ pygame.init()
 import Levels as L
 import Block as B
 import Dude as D
+from get_ip import *
 
 def view_screen(screen, current_layout):
     sub = pygame.display.set_mode((len(current_layout[0])*24, len(current_layout)*24))
@@ -106,6 +108,19 @@ def main():
                                 carry_block = True
                                 current_layout[current_dude.i-1][current_dude.j] = B.Block(2)
                                 current_layout[current_dude.i][current_dude.j+dj] = B.Block(0)
+                            elif current_layout[i][j+dj].type == current_layout[i-1][j+dj].type == 2:
+                                try:
+                                    ip = getIP()
+                                    screen.fill((0, 0, 0))
+                                    font = pygame.font.Font('freesansbold.ttf', 32)
+                                    text = font.render(ip, True, (255, 255, 255))
+                                    textRect = text.get_rect()
+                                    textRect.center = (216, 144)
+                                    screen.blit(text, textRect)
+                                    pygame.display.flip()
+                                    sleep(8)
+                                except:
+                                    pass
                         # put down block if you're carrying one
                         else:
                             if current_layout[current_dude.i-1][current_dude.j+dj].type == 0:
