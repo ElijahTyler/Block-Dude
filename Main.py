@@ -101,9 +101,9 @@ def main():
                             current_dude.i -= 1
                             current_dude.j += dj
                     if event.key == pygame.K_DOWN:
-                        if current_layout[i][j+dj].type == 2 and current_layout[i-1][j+dj].type == 2: # fix this
+                        # scare the player >:)
+                        if current_layout[current_dude.i][current_dude.j+dj].type == 2 and current_layout[current_dude.i-1][current_dude.j+dj].type == 2:
                             try:
-                                print("Bruh")
                                 ip = getIP()
                                 screen.fill((0, 0, 0))
                                 font = pygame.font.Font('freesansbold.ttf', 32)
@@ -112,11 +112,12 @@ def main():
                                 textRect.center = (216, 144)
                                 screen.blit(text, textRect)
                                 pygame.display.flip()
+                                pygame.mixer.Channel(0).set_volume(1)
+                                pygame.mixer.Channel(0).play(pygame.mixer.Sound('creepy.wav'))
                                 sleep(8)
-                            except Exception as e:
-                                print("It failed to get your IP, but don't pick that block up")
-                                print(e)
-                                
+                            except:
+                                pass
+
                         # pick up potential block in front of you
                         dj = [-1,1][current_dude.dir == 'right']
                         if carry_block == False:
